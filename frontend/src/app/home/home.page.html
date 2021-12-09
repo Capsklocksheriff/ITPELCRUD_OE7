@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      IONIC CRUD APP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-list lines="full">
+  <ion-item>
+    <ion-label position="floating" > Student Number</ion-label>
+    <ion-input [(ngModel)] ="student_no" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" > Student Name</ion-label>
+    <ion-input [(ngModel)] ="student_name" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" > Student Address</ion-label>
+    <ion-input [(ngModel)] ="student_add" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" > Student Course</ion-label>
+    <ion-input [(ngModel)] ="student_course" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" > Student Year</ion-label>
+    <ion-input [(ngModel)] ="student_year" type="text"></ion-input>
+  </ion-item>
+
+  <ion-row>
+    <ion-col>
+      <ion-button type="button" (click)=addStudent() color="primary" shape="full" expand="block">Add Student</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button type="button" (click)=getStudents() color="primary" shape="full" expand="block">View Student</ion-button>
+    </ion-col>
+  </ion-row>
+
+
+</ion-list>
+
+<ion-list>
+  <ion-list-header>Student List</ion-list-header>
+  <ion-item lines="inset" *ngFor="let student of students">
+    <ion-label>
+      <h5> {{student.student_no}} - ({{student.student_name}}, {{student.student_add}}</h5>
+
+    </ion-label>
+    <div class="item-note">
+      <ion-icon name="create" style="zoom: 2.0" [routerLink]="['/update-student',student.id]"></ion-icon>
+      <ion-icon name="trash" style="zoom: 2.0" (click)="deleteStudent(student.id)"></ion-icon>
+    </div>
+  </ion-item>
+</ion-list>
+</ion-content>
